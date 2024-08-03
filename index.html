@@ -7,27 +7,77 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
             text-align: center;
-            margin-top: 50px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
         .cat-art {
             font-size: 24px;
             margin: 20px 0;
             white-space: pre-wrap;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #f0f0f0;
         }
         .btn {
             padding: 10px 20px;
             margin: 5px;
             font-size: 16px;
             cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            background-color: #007bff;
+        }
+        .btn.copy {
+            background-color: #28a745;
+        }
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+        .toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
         }
     </style>
 </head>
 <body>
     <h1>Cat Art Generator</h1>
-    <div class="cat-art" id="catArtDisplay">Click "Generate" to see a cat art!</div>
-    <button class="btn" onclick="generateCatArt()">Generate</button>
-    <button class="btn" onclick="copyToClipboard()">Copy</button>
+    <div class="container">
+        <div class="cat-art" id="catArtDisplay">Click "Generate" to see a cat art!</div>
+        <button class="btn" onclick="generateCatArt()">Generate</button>
+        <button class="btn copy" onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
+    </div>
+    <div id="toast" class="toast">Copied to clipboard!</div>
 
     <script>
         const catArts = [
@@ -98,15 +148,22 @@
             const randomIndex = Math.floor(Math.random() * catArts.length);
             const randomCatArt = catArts[randomIndex];
             document.getElementById('catArtDisplay').textContent = randomCatArt;
+            document.getElementById('copyButton').style.display = 'inline-block';
         }
 
         function copyToClipboard() {
             const textToCopy = document.getElementById('catArtDisplay').textContent;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                alert("Copied to clipboard!");
+                showToast();
             }, () => {
                 alert("Failed to copy!");
             });
+        }
+
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.className = "toast show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
         }
     </script>
 </body>
