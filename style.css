@@ -72,11 +72,20 @@ h1 {
 }
 
 .btn.copy {
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 40px;
+    height: 40px;
     background-color: #28a745;
-    border-radius: 5px;
-    font-size: 20px;
-    line-height: 1;
+    border-radius: 50%;
+    border: none;
+}
+
+.btn.copy svg {
+    fill: none;
+    stroke: #fff;
 }
 
 .btn.copy:hover {
@@ -89,7 +98,7 @@ h1 {
     background-color: #333;
     color: #fff;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 16px;
     position: fixed;
     z-index: 1;
@@ -98,6 +107,7 @@ h1 {
     transform: translateX(-50%);
     font-size: 17px;
     opacity: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: opacity 0.5s, bottom 0.5s;
 }
 
