@@ -1,18 +1,28 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f5f5f5;
     text-align: center;
     padding: 20px;
     margin: 0;
 }
 
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
 .container {
     max-width: 600px;
     margin: auto;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    transform: scale(1.02);
 }
 
 .cat-art {
@@ -20,30 +30,72 @@ body {
     margin: 20px 0;
     white-space: pre-wrap;
     border: 2px solid #333;
-    border-radius: 8px;
-    padding: 15px;
+    border-radius: 12px;
+    padding: 20px;
     background-color: #f0f0f0;
+    min-height: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.cat-art.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn {
     padding: 10px 20px;
-    margin: 5px;
+    margin: 10px 5px;
     font-size: 16px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     color: #fff;
     background-color: #007bff;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
 }
 
 .btn.copy {
+    padding: 10px;
     background-color: #28a745;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.btn.copy svg {
+    fill: #fff;
+    width: 20px;
+    height: 20px;
+}
+
+.btn.copy:hover {
+    background-color: #218838;
 }
 
 .toast {
     visibility: hidden;
     min-width: 250px;
-    margin-left: -125px;
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -53,20 +105,15 @@ body {
     z-index: 1;
     left: 50%;
     bottom: 30px;
+    transform: translateX(-50%);
     font-size: 17px;
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
 }
 
 .toast.show {
     visibility: visible;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    opacity: 1;
+    bottom: 50px;
 }
 
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-}

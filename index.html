@@ -5,16 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Art Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Cat Art Generator</h1>
     <div class="container">
         <div class="cat-art" id="catArtDisplay">Click "Generate" to see a cat art!</div>
         <button class="btn" onclick="generateCatArt()">Generate</button>
-        <button class="btn copy" onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
+        <button class="btn copy" onclick="copyToClipboard()" id="copyButton" style="display:none;" title="Copy">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M19 21H9c-1.1 0-2-.9-2-2V7H5V5h2V3c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v2h2v2h-2v12c0 1.1-.9 2-2 2zM9 5v14h10V5H9z"></path>
+            </svg>
+        </button>
     </div>
     <div id="toast" class="toast">Copied to clipboard!</div>
 
+    <script src="catArts.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
+
