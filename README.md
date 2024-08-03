@@ -30,3 +30,9 @@ The application is built using basic web technologies:
   - Stores an array of cat ASCII arts.
   - Selects and displays a random art from the array when the "Generate" button is clicked.
   - Copies the displayed art to the clipboard when the "Copy" button is clicked.
+
+## Live Demo
+
+To view the live demo of the Cat Ascii Art Generator, visit the following link:
+
+[https://m-ziraki.github.io/cat-ascii-art-generator/](https://m-ziraki.github.io/cat-ascii-art-generator/)
